@@ -25,6 +25,8 @@ public class AirHockeyRenderer implements GLSurfaceView.Renderer {
     private static final int BYTES_PER_FLOAT = 4;
     private final FloatBuffer vertexData;
 
+    private int program;
+
     public AirHockeyRenderer(Context context) {
         this.context = context;
         float[] tableVertices = {
@@ -68,8 +70,9 @@ public class AirHockeyRenderer implements GLSurfaceView.Renderer {
         String vertexShaderSource = TextResourceReader.readTextFileFromResource(context, R.raw.simple_vertex_shader);
         String fragmentShaderSource = TextResourceReader.readTextFileFromResource(context, R.raw.simple_fragment_shader);
 
-        int vertexShader = ShaderHelper.compileVertexSHader(vertexShaderSource);
-        int fragmentShader = ShaderHelper.compileFragmentSHader(fragmentShaderSource);
+        int vertexShader = ShaderHelper.compileVertexShader(vertexShaderSource);
+        int fragmentShader = ShaderHelper.compileFragmentShader(fragmentShaderSource);
+        program = ShaderHelper.linkProgram(vertexShader, fragmentShader);
 
 
 
