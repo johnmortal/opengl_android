@@ -8,6 +8,7 @@ import static android.opengl.GLES20.GL_LINK_STATUS;
 import static android.opengl.GLES20.GL_VALIDATE_STATUS;
 import static android.opengl.GLES20.GL_VERTEX_SHADER;
 import static android.opengl.GLES20.glAttachShader;
+import static android.opengl.GLES20.glCompileShader;
 import static android.opengl.GLES20.glCreateProgram;
 import static android.opengl.GLES20.glCreateShader;
 import static android.opengl.GLES20.glDeleteProgram;
@@ -40,6 +41,9 @@ public class ShaderHelper {
             return 0;
         }
         glShaderSource(shaderObjectId, shaderCode); // upload source code to the graphics card and associate it with the given ID
+
+        glCompileShader(shaderObjectId);
+
         final int[] compileStatus = new int[1];
         glGetShaderiv(shaderObjectId, GL_COMPILE_STATUS, compileStatus, 0); //
 
