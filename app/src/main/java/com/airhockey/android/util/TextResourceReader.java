@@ -1,4 +1,4 @@
-package com.airhockey.android.com.airhockey.android.util;
+package com.airhockey.android.util;
 
 import android.content.Context;
 import android.content.res.Resources;
